@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity
@@ -35,7 +36,93 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         ListView listView = (ListView) findViewById(R.id.listview);
-        //listView.setOnClickListener(this);
+
+
+        Button btn1 = (Button)findViewById(R.id.button1);
+        Button btn2 = (Button)findViewById(R.id.button2);
+        Button btn3 = (Button)findViewById(R.id.button3);
+        Button btn4 = (Button)findViewById(R.id.button4);
+        Button btn5 = (Button)findViewById(R.id.button5);
+        Button btn6 = (Button)findViewById(R.id.button6);
+        Button btn7 = (Button)findViewById(R.id.button7);
+        Button btn8 = (Button)findViewById(R.id.button8);
+        Button btn9 = (Button)findViewById(R.id.button9);
+        Button btn10 = (Button)findViewById(R.id.button10);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+                //intent.putExtra("position", position);
+                startActivity(intent);
+//your stuff here.
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//your stuff here.
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//your stuff here.
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//your stuff here.
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//your stuff here.
+            }
+        });
+
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//your stuff here.
+            }
+        });
+
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//your stuff here.
+            }
+        });
+
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//your stuff here.
+            }
+        });
+
+        btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//your stuff here.
+            }
+        });
+
+        btn10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//your stuff here.
+            }
+        });
+
 
 
 
@@ -47,6 +134,8 @@ public class MainActivity extends AppCompatActivity
 
         final RSSRead rSSRead = new RSSRead(this, listView);
         rSSRead.execute();
+
+
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -101,11 +190,6 @@ public class MainActivity extends AppCompatActivity
                 }
                 if(position == 9){
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(9)));
-                    intent.putExtra("position", position);
-                    startActivity(intent);
-                }
-                if(position == 10){
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(10)));
                     intent.putExtra("position", position);
                     startActivity(intent);
                 }
