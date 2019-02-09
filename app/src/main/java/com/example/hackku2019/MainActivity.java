@@ -1,8 +1,12 @@
 package com.example.hackku2019;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,9 +16,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+         {
+    private SwipeRefreshLayout mSwipeLayout;
+
+    ListView listView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +34,10 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        ListView listView = (ListView) findViewById(R.id.listview);
+        //listView.setOnClickListener(this);
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -38,11 +45,77 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        final RSSRead rSSRead = new RSSRead(this, listView);
+        rSSRead.execute();
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+
+            public void onItemClick(AdapterView parentView, View childView,
+                                    int position, long id) {
+                if(position == 0){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(0)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+                if(position == 1){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(1)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+                if(position == 2){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(2)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+                if(position == 3){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(3)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+                if(position == 4){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(4)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+                if(position == 5){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(5)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+                if(position == 6){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(6)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+                if(position == 7){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(7)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+                if(position == 8){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(8)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+                if(position == 9){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(9)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+                if(position == 10){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rSSRead.gameLinks.get(10)));
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+
+        }
+    });
+
     }
 
-    @Override
+             @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -59,7 +132,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
+   @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -74,28 +147,4 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 }
