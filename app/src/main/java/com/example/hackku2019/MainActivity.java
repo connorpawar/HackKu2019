@@ -1,6 +1,14 @@
 package com.example.hackku2019;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -63,6 +71,10 @@ public class MainActivity extends AppCompatActivity
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                writeOnImage();
+
+
 //your stuff here.
             }
         });
@@ -198,6 +210,18 @@ public class MainActivity extends AppCompatActivity
     });
 
     }
+
+        public void writeOnImage() {
+            Bitmap bitmap = BitmapFactory.decodeFile("res/drawable/backboard_new.jpg");
+            Canvas canvas = new Canvas(bitmap);
+            Paint paint = new Paint();
+            paint.setColor(Color.RED);
+            paint.setTextSize(10);
+            int x = 50;
+            int y = 50;
+            canvas.drawText("Some Text here", x, y, paint);
+        }
+
 
              @Override
     public void onBackPressed() {
